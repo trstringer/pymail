@@ -1,0 +1,12 @@
+{
+  "sender": {
+    "auth": {
+      "user": "user@gmail.com",
+      "pass": "password"
+    }
+  },
+  "addressBook": [
+    { "name": "Person1", "email": "person1@email.com" },
+    { "name": "Person2", "email": "person2@email.com" }
+  ]
+}
