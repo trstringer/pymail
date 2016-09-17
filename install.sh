@@ -7,4 +7,5 @@ echo "creating necessary folder structure"
 mkdir -p ~/pymail/archive
 mkdir -p ~/pymail/outbox/sent
 
+echo "creating base config file at $CONFIGPATH"
 cp $CONFIGPATH ~/.pymail
