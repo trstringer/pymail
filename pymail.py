@@ -71,7 +71,11 @@ class Email:
         messages = [b"\n".join(temp_message[1]).decode('utf-8') for temp_message in messages]
         messages = [parser.Parser().parsestr(temp_message) for temp_message in messages]
         for message in messages:
-            yield Email(message['from'], message['to'], message['subject'], message._payload)
+            if type(message._payload) is str:
+                message_body = message._payload
+            else
+                message_body = message._payload[0]._payload
+            yield Email(message['from'], message['to'], message['subject'], message_body)
         connection.quit()
 
     @staticmethod
