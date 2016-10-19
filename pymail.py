@@ -12,15 +12,16 @@ import sys
 Email class to handle the data and operations of emails
 """
 class Email:
-    def __init__(self, sender, to, subject, body, email_filename=None):
+    def __init__(self, sender, to, subject, body, date, email_filename=None):
         self.sender = sender
         self.to = to
         self.subject = subject
         self.body = body
+        self.date = date
         self.email_filename = email_filename
 
     def __str__(self):
-        return '{}\n{}\n{}'.format(self.sender, self.subject, self.body)
+        return '{}\n{}\n{}\n{}'.format(self.sender, self.subject, self.date, self.body)
 
     def recipient_is_email_address(self):
         return re.search(r'.*@.*\..*', self.to) is not None
@@ -75,7 +76,7 @@ class Email:
                 message_body = message._payload
             else:
                 message_body = message._payload[0]._payload
-            yield Email(message['from'], message['to'], message['subject'], message_body)
+            yield Email(message['from'], message['to'], message['subject'], message_body, message['date'])
         connection.quit()
 
     @staticmethod
